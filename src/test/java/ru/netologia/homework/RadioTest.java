@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
-    void testConstructorWithCorrectParams(){
+    void testConstructorWithCorrectParams() {
         int volume = 10;
         int channel = 5;
         Radio radio = new Radio(channel, volume);
@@ -19,7 +19,7 @@ public class RadioTest {
     }
 
     @Test
-    void testConstructorWithIncorrectParams(){
+    void testConstructorWithIncorrectParams() {
         int volume = -10;
         int channel = 1234;
         Radio radio = new Radio(channel, volume);
@@ -32,7 +32,7 @@ public class RadioTest {
     }
 
     @Test
-    void testNext(){
+    void testNext() {
         Radio radio = new Radio();
         radio.next();
         int expectedRadio = 1;
@@ -41,7 +41,7 @@ public class RadioTest {
     }
 
     @Test
-    void testBorderNext(){
+    void testBorderNext() {
         Radio radio = new Radio();
         radio.setCurrentRadio(9);
         radio.next();
@@ -51,7 +51,7 @@ public class RadioTest {
     }
 
     @Test
-    void testPrev(){
+    void testPrev() {
         Radio radio = new Radio();
         radio.setCurrentRadio(2);
         radio.prev();
@@ -61,7 +61,7 @@ public class RadioTest {
     }
 
     @Test
-    void testBorderPrev(){
+    void testBorderPrev() {
         Radio radio = new Radio();
         radio.prev();
         int expectedRadio = 9;
@@ -70,7 +70,7 @@ public class RadioTest {
     }
 
     @Test
-    void testIncreaseVolume(){
+    void testIncreaseVolume() {
         Radio radio = new Radio();
         radio.increaseVolume();
         radio.increaseVolume();
@@ -80,7 +80,7 @@ public class RadioTest {
     }
 
     @Test
-    void testDecreaseVolume(){
+    void testDecreaseVolume() {
         Radio radio = new Radio();
         radio.increaseVolume();
         radio.increaseVolume();
