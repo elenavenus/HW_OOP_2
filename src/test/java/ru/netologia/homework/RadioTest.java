@@ -16,8 +16,8 @@ public class RadioTest {
 
     @Test
     void testBorderNext() {
-        Radio radio = new Radio();
-        radio.setCurrentRadio(9);
+        Radio radio = new Radio(50);
+        radio.setCurrentRadio(49);
         radio.next();
         int expectedRadio = 0;
         int actualRadio = radio.getCurrentRadio();
@@ -101,4 +101,6 @@ public class RadioTest {
         int actualRadio = radio.getCurrentRadio();
         Assertions.assertEquals(expectedRadio, actualRadio);
     }
+
+
 }
