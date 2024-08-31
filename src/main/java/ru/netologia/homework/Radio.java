@@ -3,10 +3,19 @@ package ru.netologia.homework;
 public class Radio {
     private int currentRadio;
     private int currentVolume;
+    private final int radioCount;
+
+    public Radio() {
+        radioCount = 10;
+    }
+
+    public Radio(int radioCount) {
+        this.radioCount = radioCount;
+    }
 
 
     public void next() {
-        if (currentRadio == 9) {
+        if (currentRadio == (radioCount - 1)) {
             currentRadio = 0;
         } else {
             currentRadio++;
@@ -15,7 +24,7 @@ public class Radio {
 
     public void prev() {
         if (currentRadio == 0) {
-            currentRadio = 9;
+            currentRadio = radioCount - 1;
         } else {
             currentRadio--;
         }
@@ -38,7 +47,7 @@ public class Radio {
     }
 
     public void setCurrentRadio(int currentRadio) {
-        if (currentRadio >= 0 && currentRadio <= 9) {
+        if (currentRadio >= 0 && currentRadio <= (radioCount - 1)) {
             this.currentRadio = currentRadio;
         }
     }
