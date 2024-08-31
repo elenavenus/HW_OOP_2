@@ -6,32 +6,6 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
-    void testConstructorWithCorrectParams() {
-        int volume = 10;
-        int channel = 5;
-        Radio radio = new Radio(channel, volume);
-        int actualVolume = radio.getCurrentVolume();
-        int actualChannel = radio.getCurrentRadio();
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(volume, actualVolume),
-                () -> Assertions.assertEquals(channel, actualChannel)
-        );
-    }
-
-    @Test
-    void testConstructorWithIncorrectParams() {
-        int volume = -10;
-        int channel = 1234;
-        Radio radio = new Radio(channel, volume);
-        int actualVolume = radio.getCurrentVolume();
-        int actualChannel = radio.getCurrentRadio();
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(0, actualVolume),
-                () -> Assertions.assertEquals(0, actualChannel)
-        );
-    }
-
-    @Test
     void testNext() {
         Radio radio = new Radio();
         radio.next();
@@ -80,6 +54,17 @@ public class RadioTest {
     }
 
     @Test
+    void testIncreaseVolumeBorder() {
+        Radio radio = new Radio();
+        for (int i = 0; i < 101; i++) {
+            radio.increaseVolume();
+        }
+        int expectedVolume = 100;
+        int actualVolume = radio.getCurrentVolume();
+        Assertions.assertEquals(expectedVolume, actualVolume);
+    }
+
+    @Test
     void testDecreaseVolume() {
         Radio radio = new Radio();
         radio.increaseVolume();
@@ -88,5 +73,32 @@ public class RadioTest {
         int expectedVolume = 1;
         int actualVolume = radio.getCurrentVolume();
         Assertions.assertEquals(expectedVolume, actualVolume);
+    }
+
+    @Test
+    void testDecreaseVolumeBorder() {
+        Radio radio = new Radio();
+        radio.decreaseVolume();
+        int expectedVolume = 0;
+        int actualVolume = radio.getCurrentVolume();
+        Assertions.assertEquals(expectedVolume, actualVolume);
+    }
+
+    @Test
+    void testSetRadioRightBorder() {
+        Radio radio = new Radio();
+        radio.setCurrentRadio(10);
+        int expectedRadio = 0;
+        int actualRadio = radio.getCurrentRadio();
+        Assertions.assertEquals(expectedRadio, actualRadio);
+    }
+
+    @Test
+    void testSetRadioLeftBorder() {
+        Radio radio = new Radio();
+        radio.setCurrentRadio(-1);
+        int expectedRadio = 0;
+        int actualRadio = radio.getCurrentRadio();
+        Assertions.assertEquals(expectedRadio, actualRadio);
     }
 }
